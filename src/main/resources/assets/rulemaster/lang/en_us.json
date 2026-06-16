@@ -1,0 +1,138 @@
+{
+  "item.rulemaster.blood_crystal": "Blood Crystal",
+
+  "item.rulemaster.bismuth_helmet": "Bismuth Helmet",
+  "item.rulemaster.bismuth_chestplate": "Bismuth Chestplate",
+  "item.rulemaster.bismuth_leggings": "Bismuth Leggings",
+  "item.rulemaster.bismuth_boots": "Bismuth Boots",
+
+  "item.rulemaster.bismuth_horse_armor": "Bismuth Horse Armor",
+  "item.rulemaster.kaupen_bow": "Kaupen Bow",
+
+  "item.rulemaster.cauliflower_seeds": "Cauliflower Seeds",
+  "item.rulemaster.honey_berries": "Honey Berries",
+  "item.rulemaster.rice_shoot": "Rice Shoot",
+
+  "item.rulemaster.bar_brawl_music_disc": "Bar Brawl Music Disc",
+  "item.rulemaster.spectre_staff": "Spectre Staff",
+
+  "item.rulemaster.bismuth_water_bucket": "Bismuth Water Bucket",
+
+  "item.rulemaster.giraffe_spawn_egg": "Giraffe Spawn Egg",
+  "item.rulemaster.warturtle_spawn_egg": "Warturtle Spawn Egg",
+  "item.rulemaster.dodo_spawn_egg": "Dodo Spawn Egg",
+
+  "item.rulemaster.iron_warturtle_armor": "Iron Warturtle Armor",
+  "item.rulemaster.gold_warturtle_armor": "Gold Warturtle Armor",
+  "item.rulemaster.diamond_warturtle_armor": "Diamond Warturtle Armor",
+  "item.rulemaster.netherite_warturtle_armor": "Netherite Warturtle Armor",
+  "item.rulemaster.bismuth_warturtle_armor": "Bismuth Warturtle Armor",
+
+  "item.rulemaster.bloodwood_boat": "Bloodwood Boat",
+  "item.rulemaster.bloodwood_chest_boat": "Bloodwood Chest Boat",
+
+  "item.rulemaster.tomahawk": "Tomahawk",
+
+  "item.minecraft.potion.effect.stinky_potion": "Stinky Potion",
+  "item.minecraft.splash_potion.effect.stinky_potion": "Stinky Splash Potion",
+  "item.minecraft.lingering_potion.effect.stinky_potion": "Stinky Lingering Potion",
+
+  "block.rulemaster.blood_crystal_block": "Blood Crystal Block",
+
+  "block.rulemaster.bismuth_button": "Bismuth Button",
+  "block.rulemaster.bismuth_pressure_plate": "Bismuth Pressure Plate",
+
+  "block.rulemaster.bismuth_lamp": "Bismuth Lamp",
+  "block.rulemaster.cauliflower_crop": "Cauliflower Crop",
+
+  "block.rulemaster.petunia": "Petunia",
+  "block.rulemaster.potted_petunia": "Potted Petunia",
+  "block.rulemaster.colored_leaves": "Colored Leaves",
+  "block.rulemaster.honey_berry_bush": "Honey Berry Bush",
+  "block.rulemaster.rice_crop": "Rice Crop",
+  "block.rulemaster.chair": "Chair",
+
+  "block.rulemaster.bismuth_water_block": "Bismuth Water",
+  "block.rulemaster.bismuth_water": "Bismuth Water",
+
+  "block.rulemaster.bloodwood_log": "Bloodwood Log",
+  "block.rulemaster.bloodwood_wood": "Bloodwood Wood",
+  "block.rulemaster.stripped_bloodwood_log": "Stripped Bloodwood Log",
+  "block.rulemaster.stripped_bloodwood_wood": "Stripped Bloodwood Wood",
+
+  "block.rulemaster.bloodwood_planks": "Bloodwood Planks",
+  "block.rulemaster.bloodwood_leaves": "Bloodwood Leaves",
+  "block.rulemaster.bloodwood_sapling": "Bloodwood Sapling",
+  "block.rulemaster.potted_bloodwood_sapling": "Potted Bloodwood Sapling",
+
+  "block.rulemaster.kaupen_portal": "Kaupen Portal",
+  "block.rulemaster.main_pedestal": "Main Pedestal",
+  "block.rulemaster.side_pedestal": "Side Pedestal",
+  "block.rulemaster.pedestal": "Pedestal",
+  "block.rulemaster.crystallizer": "Crystallizer",
+
+  "fluid.rulemaster.bismuth_water_source": "Bismuth Water (Source)",
+  "fluid.rulemaster.bismuth_water_flower": "Bismuth Water (Flowing)",
+
+  "jukebox_song.rulemaster.bar_brawl": "Bryan Tech - Bar Brawl (CC0)",
+
+  "tooltip.rulemaster.cauliflower": "This is delicious!",
+
+  "tooltip.rulemaster.chisel": "Press §eShift§r for more Information!",
+  "tooltip.rulemaster.chisel.shift_down": "This item chisels blocks!",
+
+  "painting.rulemaster.world.title": "World",
+  "painting.rulemaster.world.author": "NanoAttack",
+  "painting.rulemaster.shrimp.title": "Shrimp",
+  "painting.rulemaster.shrimp.author": "NanoAttack",
+  "painting.rulemaster.saw_them.title": "Saw Them",
+  "painting.rulemaster.saw_them.author": "NanoAttack",
+  "painting.rulemaster.wanderer.title": "Wanderer",
+  "painting.rulemaster.wanderer.author": "PlatinumG17",
+
+  "key.rulemaster.kaupen_key": "Kaupen Key",
+
+  "enchantment.rulemaster.lightning_striker": "Lightning Striker",
+
+  "entity.minecraft.villager.rulemaster.kaupenger": "Kaupenger",
+
+  "entity.rulemaster.warturtle": "Warturtle",
+  "entity.rulemaster.dodo": "Dodo",
+  "entity.rulemaster.bloodwood_chest_boat": "Bloodwood Chest Boat",
+
+
+  "effect.rulemaster.stinky": "Stinky",
+  "effect.rulemaster.stinky.description": "Causes entities around you to take damage",
+
+  "death.attack.stinky": "%s was stinkied to death!",
+  "death.attack.stinky.player": "%s was stinkied to death trying to outrun %s",
+
+  "advancements.rulemaster.root.title": "MC Course Advancements",
+  "advancements.rulemaster.root.description": "MC Course Advancements Pretty Cool!",
+
+  "advancements.rulemaster.plant_custom.title": "Plant a Custom Plant",
+  "advancements.rulemaster.plant_custom.description": "Planting these custom plants is pretty neat!",
+
+  "advancements.rulemaster.chisel_stone.title": "Chiseled in History!",
+  "advancements.rulemaster.chisel_stone.description": "You used a chisel on Stone. Awesome!",
+
+  "advancements.rulemaster.be_stinky.title": "What's that smell?",
+  "advancements.rulemaster.be_stinky.description": "You are stinky! Go take a shower!",
+
+  "subtitles.rulemaster.chisel_use": "Chisel Used",
+  "subtitles.rulemaster.magic_block_break": "Breaking Magic Block",
+  "subtitles.rulemaster.magic_block_fall": "Falling on Magic Block",
+  "subtitles.rulemaster.magic_block_hit": "Hitting Magic Block",
+  "subtitles.rulemaster.magic_block_place": "Placing Magic Block",
+  "subtitles.rulemaster.magic_block_step": "Stepping on Magic Block",
+  "subtitles.rulemaster.bar_brawl": "Playing Bar Brawl Music Disc",
+
+  "stat.rulemaster.chisel_used": "Chisel Used",
+  "stat.rulemaster.mana_used_total": "Total Mana Used",
+
+  "rulemaster.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "rulemaster.tooltip.liquid.amount": "%s mB",
+
+  "creativetab.rulemaster.bismuth_items": "Rule Master Items",
+  "creativetab.rulemaster.bismuth_blocks": "Rule Master Blocks"
+}

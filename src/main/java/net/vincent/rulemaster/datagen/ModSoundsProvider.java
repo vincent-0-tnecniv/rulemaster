@@ -1,0 +1,29 @@
+package net.vincent.rulemaster.datagen;
+
+import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricSoundsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+
+import java.util.concurrent.CompletableFuture;
+
+public class ModSoundsProvider extends FabricSoundsProvider {
+    public ModSoundsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        super(output, registriesFuture);
+    }
+
+    @Override
+    protected void configure(HolderLookup.Provider registryLookup, SoundExporter exporter) {
+//        exporter.add(ModSounds.CHISEL_USE, SoundTypeBuilder.of(ModSounds.CHISEL_USE)
+//                .sound(SoundTypeBuilder.RegistrationBuilder.ofFile(Identifier.fromNamespaceAndPath(MCCourse.MOD_ID, "chisel_use"))));
+//
+//        exporter.add(ModSounds.BAR_BRAWL, SoundTypeBuilder.of(ModSounds.BAR_BRAWL.value())
+//                .sound(SoundTypeBuilder.RegistrationBuilder.ofFile(Identifier.fromNamespaceAndPath(MCCourse.MOD_ID, "bar_brawl")).stream(true)));
+
+
+    }
+
+    @Override
+    public String getName() {
+        return "Rule Master Sounds";
+    }
+}
