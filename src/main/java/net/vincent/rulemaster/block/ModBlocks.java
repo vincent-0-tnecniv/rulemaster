@@ -22,6 +22,11 @@ public class ModBlocks {
             new FleshBlock(properties.strength(-1.0F, 3600000.0F).noLootTable().isValidSpawn(Blocks::never).sound(SoundType.SLIME_BLOCK)));
     // no copy using code allowed - have to do the actual copy yourself
 
+    public static final Block FLESH_BLOCK = registerBlock("flesh_block", properties ->
+            new FleshBlock(properties.copy().sound(SoundType.SLIME)));
+    // done in git
+    
+
     private static Block registerBlockWithoutBlockItem(String name, Function<BlockBehaviour.Properties, Block> function) {
         return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(RuleMaster.MOD_ID, name), function.apply(BlockBehaviour.Properties.of()
                 .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(RuleMaster.MOD_ID, name)))));
