@@ -1,5 +1,6 @@
 {
   "item.rulemaster.blood_crystal": "Blood Crystal",
+  "item.rulemaster.blood_piercer": "§6Blood Piercer§r",
 
   "item.rulemaster.bismuth_helmet": "Bismuth Helmet",
   "item.rulemaster.bismuth_chestplate": "Bismuth Chestplate",
@@ -100,12 +101,13 @@
   "entity.rulemaster.dodo": "Dodo",
   "entity.rulemaster.bloodwood_chest_boat": "Bloodwood Chest Boat",
 
+  "effect.rulemaster.stealth": "Stealth",
+  "effect.rulemaster.stun": "Stunned",
+  "effect.rulemaster.stealth.description": "You are very sneaky!",
+  "effect.rulemaster.stun.description": "Makes entities unresponsive.",
 
-  "effect.rulemaster.stinky": "Stinky",
-  "effect.rulemaster.stinky.description": "Causes entities around you to take damage",
-
-  "death.attack.stinky": "%s was stinkied to death!",
-  "death.attack.stinky.player": "%s was stinkied to death trying to outrun %s",
+  "death.attack.bleeding": "%s bled too much",
+  "death.attack.bleeding.player": "%s has their blood drunk by %s",
 
   "advancements.rulemaster.root.title": "MC Course Advancements",
   "advancements.rulemaster.root.description": "MC Course Advancements Pretty Cool!",

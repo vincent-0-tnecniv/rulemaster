@@ -19,6 +19,8 @@ import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.vincent.rulemaster.data.ModDataComponents;
 import net.vincent.rulemaster.datagen.damage.ModDamageTypes;
 import net.vincent.rulemaster.effect.ModEffects;
 import org.jspecify.annotations.NonNull;
@@ -61,6 +63,15 @@ public class BloodPiercerItem extends Item {
         if (dayTime >= 13000) {
             isNight = true;
         }
+        if(owner instanceof Player player){
+            itemStack.remove(ModDataComponents.HALF);
+            itemStack.remove(ModDataComponents.LOW);
+            if(player.getHealth() / player.getMaxHealth() <= 0.2){
+                itemStack.set(ModDataComponents.LOW, true);
+            } else if(player.getHealth() / player.getMaxHealth() <= 0.5){
+                itemStack.set(ModDataComponents.HALF, true);
+            }
+        }
         super.inventoryTick(itemStack, level, owner, slot);
     }
 
@@ -92,13 +103,13 @@ public class BloodPiercerItem extends Item {
                     user.playSound(SoundEvents.WARDEN_SONIC_CHARGE, 1, 1);
                     user.playSound(SoundEvents.WARDEN_SONIC_BOOM, 1, 1);
                 } else if (user.getHealth() / user.getMaxHealth() <= 0.2) {
-                    user.playSound(SoundEvents.PLAYER_ATTACK_SWEEP, 1, 1);
+                    user.playSound(SoundEvents.SPEAR_HIT.value(), 1, 1);
                     user.playSound(SoundEvents.ZOMBIE_BREAK_WOODEN_DOOR, 1, 1);
                 } else if (user.getHealth() / user.getMaxHealth() <= 0.5) {
-                    user.playSound(SoundEvents.PLAYER_ATTACK_SWEEP, 1, 1);
+                    user.playSound(SoundEvents.SPEAR_HIT.value(), 1, 1);
                     user.playSound(SoundEvents.WOLF_ARMOR_DAMAGE, 1, 1);
                 } else {
-                    user.playSound(SoundEvents.PLAYER_ATTACK_SWEEP, 1, 1);
+                    user.playSound(SoundEvents.SPEAR_HIT.value(), 1, 1);
                     user.playSound(SoundEvents.AXE_STRIP, 1, 1);
                 }
             }
@@ -169,8 +180,6 @@ public class BloodPiercerItem extends Item {
                         1200, 0, false, false));
                 float rollingNumber = -0.5f * ((attacker.getMaxHealth() * 2f - attacker.getHealth()) / attacker.getMaxHealth()) + 1.25f;
                 boolean isVisible = Math.random() >= rollingNumber;
-                System.out.println(rollingNumber);
-                System.out.println(isVisible);
                 attacker.addEffect(new MobEffectInstance(ModEffects.STEALTH,
                         1200, 0, false, isVisible));
                 attacker.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY,
@@ -182,6 +191,11 @@ public class BloodPiercerItem extends Item {
             }
         }
         super.hurtEnemy(stack, target, attacker);
+    }
+
+    @Override
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+        return InteractionResult.FAIL;
     }
 
     @Override

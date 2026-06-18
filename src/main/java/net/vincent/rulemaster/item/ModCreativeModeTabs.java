@@ -20,7 +20,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.rulemaster.bismuth_items"))
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.BLOOD_CRYSTAL);
-//                        output.accept(ModItems.RAW_BISMUTH);
+                        output.accept(ModItems.BLOOD_PIERCER);
 //                        output.accept(ModItems.CHISEL);
 //                        output.accept(ModItems.CAULIFLOWER);
 //                        output.accept(ModItems.STARLIGHT_ASHES);

@@ -3,6 +3,7 @@ package net.vincent.rulemaster;
 import net.fabricmc.api.ModInitializer;
 
 import net.vincent.rulemaster.block.ModBlocks;
+import net.vincent.rulemaster.data.ModDataComponents;
 import net.vincent.rulemaster.effect.ModEffects;
 import net.vincent.rulemaster.item.ModCreativeModeTabs;
 import net.vincent.rulemaster.item.ModItems;
@@ -19,5 +20,6 @@ public class RuleMaster implements ModInitializer {
 		ModItems.registerItems();
 		ModCreativeModeTabs.registerCreativeModeTabs();
 		ModEffects.registerEffects();
+		ModDataComponents.registerDataComponents();
 	}
 }

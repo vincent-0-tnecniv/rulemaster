@@ -5,9 +5,20 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
+import net.minecraft.client.data.models.model.ItemModelUtils;
+import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.renderer.block.dispatch.VariantMutator;
+import net.minecraft.client.renderer.item.ClientItem;
+import net.minecraft.client.renderer.item.ConditionalItemModel;
+import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.properties.conditional.HasComponent;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.vincent.rulemaster.block.ModBlocks;
+import net.vincent.rulemaster.data.ModDataComponents;
+import net.vincent.rulemaster.item.ModItems;
+
+import java.util.Optional;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricPackOutput output) {
@@ -24,12 +35,8 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
 //        var bismuthFamily = blockModelGenerators.family(ModBlocks.BISMUTH_BLOCK);
 //
-//        blockModelGenerators.createTrivialCube(ModBlocks.RAW_BISMUTH_BLOCK);
-//        blockModelGenerators.createTrivialCube(ModBlocks.BISMUTH_ORE);
-//        blockModelGenerators.createTrivialCube(ModBlocks.BISMUTH_DEEPSLATE_ORE);
-//        blockModelGenerators.createTrivialCube(ModBlocks.BISMUTH_NETHER_ORE);
-//        blockModelGenerators.createTrivialCube(ModBlocks.BISMUTH_END_ORE);
-//        blockModelGenerators.createTrivialCube(ModBlocks.MAGIC_BLOCK);
+        blockModelGenerators.createTrivialCube(ModBlocks.BLOOD_CRYSTAL_BLOCK);
+        blockModelGenerators.createTrivialCube(ModBlocks.FLESH_BLOCK);
 //
 //        bismuthFamily.stairs(ModBlocks.BISMUTH_STAIRS);
 //        bismuthFamily.slab(ModBlocks.BISMUTH_SLAB);
@@ -80,6 +87,39 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
+        ItemModel.Unbaked unbakedPiercer = ItemModelUtils.plainModel(itemModelGenerators.createFlatItemModel(ModItems.BLOOD_PIERCER, ModelTemplates.FLAT_HANDHELD_ITEM));
+        ItemModel.Unbaked unbakedHalfPiercer = ItemModelUtils.plainModel(itemModelGenerators.createFlatItemModel(ModItems.BLOOD_PIERCER, "_half_health", ModelTemplates.FLAT_HANDHELD_ITEM));
+        ItemModel.Unbaked unbakedLowPiercer = ItemModelUtils.plainModel(itemModelGenerators.createFlatItemModel(ModItems.BLOOD_PIERCER, "_low_health", ModelTemplates.FLAT_HANDHELD_ITEM));
+
+        ItemModel.Unbaked healthMatchingPiercerModel = new ConditionalItemModel.Unbaked(Optional.empty(),
+                new HasComponent(ModDataComponents.LOW, false),
+                    unbakedLowPiercer,
+                new ConditionalItemModel.Unbaked(Optional.empty(),
+                        new HasComponent(ModDataComponents.HALF, false),
+                        unbakedHalfPiercer,
+                        unbakedPiercer)
+        );
+
+        // What is it doing? It is basically the same as the following logic
+        /*
+            if(low){
+                return low_model
+            } else{
+                if(half){
+                    return half_model;
+                } else{
+                    return full_model;
+                }
+            }
+
+         */
+
+        itemModelGenerators.itemModelOutput.accept(ModItems.BLOOD_PIERCER,
+                new ClientItem(healthMatchingPiercerModel, new ClientItem.Properties(false, false, 1f)).model());
+
+
+
+
 //        itemModelGenerators.generateFlatItem(ModItems.BISMUTH, ModelTemplates.FLAT_ITEM);
 //        itemModelGenerators.generateFlatItem(ModItems.RAW_BISMUTH, ModelTemplates.FLAT_ITEM);
 //        // itemModelGenerators.generateFlatItem(ModItems.CHISEL, ModelTemplates.FLAT_ITEM);
@@ -100,12 +140,6 @@ public class ModModelProvider extends FabricModelProvider {
 //        itemModelGenerators.generateTrimmableItem(ModItems.BISMUTH_BOOTS, ModArmorMaterials.BISMUTH_KEY, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 //
 //        itemModelGenerators.generateFlatItem(ModItems.BISMUTH_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
-//
-//        ItemModel.Unbaked unbakedChisel = ItemModelUtils.plainModel(itemModelGenerators.createFlatItemModel(ModItems.CHISEL, ModelTemplates.FLAT_HANDHELD_ITEM));
-//        ItemModel.Unbaked unbakedUsedChisel = ItemModelUtils.plainModel(itemModelGenerators.createFlatItemModel(ModItems.CHISEL, "_used", ModelTemplates.FLAT_HANDHELD_ITEM));
-//        itemModelGenerators.itemModelOutput.accept(ModItems.CHISEL,
-//                new ClientItem(new ConditionalItemModel.Unbaked(Optional.empty(), new HasComponent(ModDataComponents.COORDINATES, false),
-//                        unbakedUsedChisel, unbakedChisel), new ClientItem.Properties(false, false, 1f)).model());
 //
 //        itemModelGenerators.createFlatItemModel(ModItems.KAUPEN_BOW, ModelTemplates.BOW);
 //        itemModelGenerators.generateBow(ModItems.KAUPEN_BOW);
