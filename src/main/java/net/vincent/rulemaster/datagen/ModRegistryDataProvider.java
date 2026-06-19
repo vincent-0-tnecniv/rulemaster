@@ -25,6 +25,6 @@ public class ModRegistryDataProvider extends FabricDynamicRegistryProvider {
 
     @Override
     public String getName() {
-        return "MCCourse Dynamic Registry";
+        return "Rule Master Dynamic Registry";
     }
 }

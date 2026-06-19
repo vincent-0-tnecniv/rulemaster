@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "rulemaster:item/blood_piercer_half_health"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "rulemaster:block/blood_crystal_block"
-  }
-}

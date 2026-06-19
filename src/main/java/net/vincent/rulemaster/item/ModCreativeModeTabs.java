@@ -72,6 +72,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.rulemaster.bismuth_blocks"))
                     .displayItems((parameters, output) -> {
                         output.accept(ModBlocks.BLOOD_CRYSTAL_BLOCK);
+                        output.accept(ModBlocks.FLESH_BLOCK);
 //                        output.accept(ModBlocks.RAW_BISMUTH_BLOCK);
 //                        output.accept(ModBlocks.BISMUTH_ORE);
 //                        output.accept(ModBlocks.BISMUTH_DEEPSLATE_ORE);

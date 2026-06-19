@@ -3,7 +3,8 @@
 	"package": "net.vincent.rulemaster.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
-		"ExampleMixin"
+		"ApplySolarLunarMixin",
+		"EntityLootTableModifierMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -2,6 +2,24 @@
   "item.rulemaster.blood_crystal": "Blood Crystal",
   "item.rulemaster.blood_piercer": "§6Blood Piercer§r",
 
+  "effect.rulemaster.stealth": "Stealth",
+  "effect.rulemaster.stun": "Stunned",
+  "effect.rulemaster.stealth.description": "You are very sneaky!",
+  "effect.rulemaster.stun.description": "Makes entities unresponsive.",
+
+  "death.attack.bleeding": "%s bled too much",
+  "death.attack.bleeding.player": "%s has their blood drunk by %s",
+
+  "creativetab.rulemaster.bismuth_items": "Rule Master Items",
+  "creativetab.rulemaster.bismuth_blocks": "Rule Master Blocks",
+
+  "block.rulemaster.blood_crystal_block": "Blood Crystal Block",
+  "block.rulemaster.flesh_block": "Flesh Block",
+
+
+  "the.above.is.for.rulemaster": "Below is for MC Course as Templates",
+
+
   "item.rulemaster.bismuth_helmet": "Bismuth Helmet",
   "item.rulemaster.bismuth_chestplate": "Bismuth Chestplate",
   "item.rulemaster.bismuth_leggings": "Bismuth Leggings",
@@ -37,8 +55,6 @@
   "item.minecraft.potion.effect.stinky_potion": "Stinky Potion",
   "item.minecraft.splash_potion.effect.stinky_potion": "Stinky Splash Potion",
   "item.minecraft.lingering_potion.effect.stinky_potion": "Stinky Lingering Potion",
-
-  "block.rulemaster.blood_crystal_block": "Blood Crystal Block",
 
   "block.rulemaster.bismuth_button": "Bismuth Button",
   "block.rulemaster.bismuth_pressure_plate": "Bismuth Pressure Plate",
@@ -101,14 +117,6 @@
   "entity.rulemaster.dodo": "Dodo",
   "entity.rulemaster.bloodwood_chest_boat": "Bloodwood Chest Boat",
 
-  "effect.rulemaster.stealth": "Stealth",
-  "effect.rulemaster.stun": "Stunned",
-  "effect.rulemaster.stealth.description": "You are very sneaky!",
-  "effect.rulemaster.stun.description": "Makes entities unresponsive.",
-
-  "death.attack.bleeding": "%s bled too much",
-  "death.attack.bleeding.player": "%s has their blood drunk by %s",
-
   "advancements.rulemaster.root.title": "MC Course Advancements",
   "advancements.rulemaster.root.description": "MC Course Advancements Pretty Cool!",
 
@@ -133,8 +141,5 @@
   "stat.rulemaster.mana_used_total": "Total Mana Used",
 
   "rulemaster.tooltip.liquid.amount.with.capacity": "%s / %s mB",
-  "rulemaster.tooltip.liquid.amount": "%s mB",
-
-  "creativetab.rulemaster.bismuth_items": "Rule Master Items",
-  "creativetab.rulemaster.bismuth_blocks": "Rule Master Blocks"
+  "rulemaster.tooltip.liquid.amount": "%s mB"
 }

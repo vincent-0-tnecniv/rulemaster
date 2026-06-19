@@ -7,7 +7,10 @@ import net.minecraft.core.registries.Registries;
 import net.vincent.rulemaster.datagen.*;
 import net.vincent.rulemaster.datagen.damage.ModDamageTypes;
 import net.vincent.rulemaster.datagen.enchantment.ModEnchantments;
-import net.vincent.rulemaster.datagen.villager.*;
+import net.vincent.rulemaster.datagen.villager.ModPOITags;
+import net.vincent.rulemaster.datagen.villager.ModTradeSets;
+import net.vincent.rulemaster.datagen.villager.ModVillagerTradeTags;
+import net.vincent.rulemaster.datagen.villager.ModVillagerTrades;
 import net.vincent.rulemaster.world.ModConfiguredFeatures;
 import net.vincent.rulemaster.world.ModPlacedFeatures;
 
@@ -21,6 +24,7 @@ public class RuleMasterDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModBlockTagProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
+		pack.addProvider(ModEntityTypeTagProvider::new);
 //		pack.addProvider(ModEquipmentAssetProvider::new);
 		pack.addProvider(ModSoundsProvider::new);
 
@@ -32,7 +36,6 @@ public class RuleMasterDataGenerator implements DataGeneratorEntrypoint {
 
 //		pack.addProvider(ModFluidTags::new);
 		pack.addProvider(ModEntityLootTableProvider::new);
-		pack.addProvider(ModEntityTypeTagsProvider::new);
 	}
 
 	@Override
@@ -44,6 +47,5 @@ public class RuleMasterDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.add(Registries.ENCHANTMENT, ModEnchantments::bootstrap);
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
-
 	}
 }

@@ -4,16 +4,23 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.MultiVariant;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.ItemModelUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TextureMapping;
+import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.client.renderer.block.dispatch.VariantMutator;
 import net.minecraft.client.renderer.item.ClientItem;
 import net.minecraft.client.renderer.item.ConditionalItemModel;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.conditional.HasComponent;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.vincent.rulemaster.RuleMaster;
+import net.vincent.rulemaster.block.FleshBlock;
 import net.vincent.rulemaster.block.ModBlocks;
 import net.vincent.rulemaster.data.ModDataComponents;
 import net.vincent.rulemaster.item.ModItems;
@@ -36,7 +43,6 @@ public class ModModelProvider extends FabricModelProvider {
 //        var bismuthFamily = blockModelGenerators.family(ModBlocks.BISMUTH_BLOCK);
 //
         blockModelGenerators.createTrivialCube(ModBlocks.BLOOD_CRYSTAL_BLOCK);
-        blockModelGenerators.createTrivialCube(ModBlocks.FLESH_BLOCK);
 //
 //        bismuthFamily.stairs(ModBlocks.BISMUTH_STAIRS);
 //        bismuthFamily.slab(ModBlocks.BISMUTH_SLAB);
@@ -50,12 +56,24 @@ public class ModModelProvider extends FabricModelProvider {
 //
 //        blockModelGenerators.createDoor(ModBlocks.BISMUTH_DOOR);
 //        blockModelGenerators.createTrapdoor(ModBlocks.BISMUTH_TRAPDOOR);
-//
-//        MultiVariant off = BlockModelGenerators.plainVariant(TexturedModel.CUBE.create(ModBlocks.BISMUTH_LAMP, blockModelGenerators.modelOutput));
-//        MultiVariant on = BlockModelGenerators.plainVariant(blockModelGenerators.createSuffixedVariant(ModBlocks.BISMUTH_LAMP, "_on",
-//                ModelTemplates.CUBE_ALL, TextureMapping::cube));
-//        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.BISMUTH_LAMP)
-//                .with(BlockModelGenerators.createBooleanModelDispatch(BismuthLampBlock.CLICKED, on, off)));
+
+        // this is made to generate the block item model
+        // i.e. the block item held on hand
+
+        PropertyDispatch<MultiVariant> dispatch = PropertyDispatch.initial(FleshBlock.TIME_OF_CYCLE)
+                .generate((value) -> BlockModelGenerators.plainVariant(
+                        blockModelGenerators.createSuffixedVariant(
+                                ModBlocks.FLESH_BLOCK,
+                                (value == 0 ? "" : "_" + value),
+                                ModelTemplates.CUBE_ALL,
+                                TextureMapping::cube
+                        )
+                ));
+
+        blockModelGenerators.blockStateOutput.accept(
+                MultiVariantGenerator.dispatch(ModBlocks.FLESH_BLOCK)
+                        .with(dispatch)
+        );
 //
 //        blockModelGenerators.createCropBlock(ModBlocks.CAULIFLOWER_CROP, CauliflowerCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6);
 //        blockModelGenerators.createPlantWithDefaultItem(ModBlocks.PETUNIA, ModBlocks.POTTED_PETUNIA, BlockModelGenerators.PlantType.TINTED);
@@ -117,10 +135,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.itemModelOutput.accept(ModItems.BLOOD_PIERCER,
                 new ClientItem(healthMatchingPiercerModel, new ClientItem.Properties(false, false, 1f)).model());
 
-
-
-
-//        itemModelGenerators.generateFlatItem(ModItems.BISMUTH, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BLOOD_CRYSTAL, ModelTemplates.FLAT_ITEM);
 //        itemModelGenerators.generateFlatItem(ModItems.RAW_BISMUTH, ModelTemplates.FLAT_ITEM);
 //        // itemModelGenerators.generateFlatItem(ModItems.CHISEL, ModelTemplates.FLAT_ITEM);
 //        itemModelGenerators.generateFlatItem(ModItems.CAULIFLOWER, ModelTemplates.FLAT_ITEM);

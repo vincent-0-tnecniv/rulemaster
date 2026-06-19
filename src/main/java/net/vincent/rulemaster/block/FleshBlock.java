@@ -28,7 +28,7 @@ public class FleshBlock extends Block {
     @Override
     protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if(itemStack.getItem() instanceof BlockItem){
-            player.sendOverlayMessage(Component.literal("You cannot place blocks here!"));
+            player.sendOverlayMessage(Component.literal("The flesh tried to consume the block, but you pulled it back..."));
             return InteractionResult.FAIL;
         }
         return super.useItemOn(itemStack, state, level, pos, player, hand, hitResult);

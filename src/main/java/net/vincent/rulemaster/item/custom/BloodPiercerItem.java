@@ -49,8 +49,6 @@ public class BloodPiercerItem extends Item {
     public boolean isNight;
     public long dayTime;
 
-
-
     @Override
     public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, @Nullable EquipmentSlot slot) {
         if (!level.isClientSide()) {

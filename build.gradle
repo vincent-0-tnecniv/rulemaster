@@ -3,6 +3,17 @@ plugins {
 	id 'maven-publish'
 }
 
+// To allow for the use of entity tags in code
+sourceSets {
+	main {
+		resources {
+			srcDirs += [
+					"src/main/generated"
+			]
+		}
+	}
+}
+
 version = project.mod_version
 group = project.maven_group
 
