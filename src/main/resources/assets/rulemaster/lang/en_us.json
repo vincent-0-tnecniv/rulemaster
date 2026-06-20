@@ -1,6 +1,8 @@
 {
   "item.rulemaster.blood_crystal": "Blood Crystal",
   "item.rulemaster.blood_piercer": "§6Blood Piercer§r",
+  "item.rulemaster.blood_crystal_sword": "Blood Crystal Sword",
+  "item.rulemaster.blood_crystal_staff": "§6Blood Crystal Staff§r",
 
   "effect.rulemaster.stealth": "Stealth",
   "effect.rulemaster.stun": "Stunned",
@@ -15,6 +17,8 @@
 
   "block.rulemaster.blood_crystal_block": "Blood Crystal Block",
   "block.rulemaster.flesh_block": "Flesh Block",
+
+  "tag.item.rulemaster.blood_crystal_repairables": "Blood Cyrstal Repairables",
 
 
   "the.above.is.for.rulemaster": "Below is for MC Course as Templates",

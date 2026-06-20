@@ -21,6 +21,8 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.BLOOD_CRYSTAL);
                         output.accept(ModItems.BLOOD_PIERCER);
+                        output.accept(ModItems.BLOOD_CRYSTAL_STAFF);
+                        output.accept(ModItems.BLOOD_CRYSTAL_SWORD);
 //                        output.accept(ModItems.CHISEL);
 //                        output.accept(ModItems.CAULIFLOWER);
 //                        output.accept(ModItems.STARLIGHT_ASHES);
