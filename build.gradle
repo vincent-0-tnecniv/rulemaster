@@ -3,7 +3,6 @@ plugins {
 	id 'maven-publish'
 }
 
-// To allow for the use of entity tags in code
 sourceSets {
 	main {
 		resources {
@@ -14,7 +13,7 @@ sourceSets {
 	}
 }
 
-version = project.mod_version
+version = project.minecraft_version + "_" + project.mod_version
 group = project.maven_group
 
 repositories {
