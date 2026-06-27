@@ -40,4 +40,6 @@ public class DashEffect extends MobEffect {
     public boolean shouldApplyEffectTickThisTick(int tickCount, int amplification) {
         return true;
     }
+
+    // this is a test comment that should only appear in version/26.1.2-beta
 }
