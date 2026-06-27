@@ -41,5 +41,6 @@ public class DashEffect extends MobEffect {
         return true;
     }
 
-    // this is a test comment that should only exist in origin/version/26.1.2-beta
+    // this is a test comment that should only exist in master.
+    // right now, this comment is in Local folder.
 }
