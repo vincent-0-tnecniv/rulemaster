@@ -15,7 +15,6 @@ public class DashEffect extends MobEffect {
 
     public static final int expirableTick = 5;
 
-
     protected DashEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
