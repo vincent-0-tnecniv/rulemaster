@@ -136,7 +136,6 @@ public class ModModelProvider extends FabricModelProvider {
                 new ClientItem(healthMatchingPiercerModel, new ClientItem.Properties(false, false, 1f)).model());
 
         itemModelGenerators.generateFlatItem(ModItems.BLOOD_CRYSTAL, ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(ModItems.BLOOD_CRYSTAL_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.declareCustomModelItem(ModItems.BLOOD_CRYSTAL_STAFF);
 //        itemModelGenerators.generateFlatItem(ModItems.RAW_BISMUTH, ModelTemplates.FLAT_ITEM);
 //        // itemModelGenerators.generateFlatItem(ModItems.CHISEL, ModelTemplates.FLAT_ITEM);

@@ -9,25 +9,21 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.vincent.rulemaster.RuleMaster;
-import net.vincent.rulemaster.item.custom.BloodCrystalSword;
 import net.vincent.rulemaster.item.custom.BloodPiercerItem;
+import net.vincent.rulemaster.item.custom.DashItem;
 
 import java.util.function.Function;
 
 public class ModItems {
     public static final Item BLOOD_CRYSTAL = registerItem("blood_crystal", Item::new);
 
-    public static final Item BLOOD_PIERCER = registerItem("blood_piercer", properties ->
-            new BloodPiercerItem(ModToolMaterials.BLOOD_CRYSTAL, properties.spear(ModToolMaterials.BLOOD_CRYSTAL,
-                    0.5F, 1.2F, 0.3F, 2.0F, 8.0F,
-                    5.0F, 5.1F, 8.0F, 4.6F))
+    public static final Item BLOOD_PIERCER = registerItem("blood_piercer", BloodPiercerItem::new
     );
 
     public static final Item BLOOD_CRYSTAL_STAFF = registerItem("blood_crystal_staff", Item::new
     );
 
-    public static final Item BLOOD_CRYSTAL_SWORD = registerItem("blood_crystal_sword", BloodCrystalSword::new
-    );
+    public static final Item DASHER = registerItem("dasher", DashItem::new);
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(RuleMaster.MOD_ID, name),

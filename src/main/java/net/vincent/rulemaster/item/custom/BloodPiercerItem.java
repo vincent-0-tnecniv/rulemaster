@@ -2,6 +2,7 @@ package net.vincent.rulemaster.item.custom;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -19,31 +20,31 @@ import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
+import net.vincent.rulemaster.client.CameraShakeManager;
 import net.vincent.rulemaster.data.ModDataComponents;
 import net.vincent.rulemaster.datagen.damage.ModDamageTypes;
 import net.vincent.rulemaster.effect.ModEffects;
+import net.vincent.rulemaster.item.ModToolMaterials;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class BloodPiercerItem extends Item {
 
     public ToolMaterial material;
 
-    public BloodPiercerItem(ToolMaterial material, Properties properties) {
-        this.material = material;
-        super(properties);
+    public BloodPiercerItem(Properties properties) {
+        this.material = ModToolMaterials.BLOOD_CRYSTAL;
+        super(properties.spear(ModToolMaterials.BLOOD_CRYSTAL,
+                0.5F, 1.2F, 0.3F, 2.0F, 8.0F,
+                5.0F, 5.1F, 8.0F, 4.6F).durability(0));
     }
 
+    public float addPierceDamage = (ModToolMaterials.BLOOD_CRYSTAL.attackDamageBonus() + 1) * 0.5f;
 
-    public float addPierceDamage = (this.material.attackDamageBonus() + 1) * 0.5f;
-
-    public static int currentAbilityCooldown = 0;
+    public static final int ticksPerSecond = 20;
     public static final int abilityCooldown = 20; // i.e. 20 ticks (1 second) cooldown
-    public static float ticksPerSecond = 20f;
     public boolean hasDiscoveredSecretAbility = false;
 
     public boolean isNight;
@@ -51,9 +52,6 @@ public class BloodPiercerItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, @Nullable EquipmentSlot slot) {
-        if (!level.isClientSide()) {
-            currentAbilityCooldown = Math.max(0, currentAbilityCooldown - 1);
-        }
         dayTime = level.getGameTime() % 24000;
         if (dayTime >= 0 && dayTime < 13000) {
             isNight = false;
@@ -78,7 +76,7 @@ public class BloodPiercerItem extends Item {
         if (user.hasEffect(ModEffects.STUN)) {
             return InteractionResult.FAIL;
         }
-        boolean canUseAbility = currentAbilityCooldown == 0;
+        boolean canUseAbility = user.getCooldowns().isOnCooldown(itemStack);
 
         float dayNightMultiplier = isNight ? 1.15f : 0.85f;
 
@@ -90,8 +88,7 @@ public class BloodPiercerItem extends Item {
         if (!entity.level().isClientSide()) {
             if (canUseAbility) {
                 useRightClickAbility(user, entity, adjustedPierceDamage);
-            } else {
-                user.sendOverlayMessage(Component.literal("§cThis ability is on cooldown for " + Math.round(Math.ceil(currentAbilityCooldown / ticksPerSecond)) + "s."));
+                user.getCooldowns().addCooldown(itemStack, abilityCooldown);
             }
         }
         if (entity.level().isClientSide()) {
@@ -144,6 +141,9 @@ public class BloodPiercerItem extends Item {
                 targetDied = true;
                 adjustedPierceDamage = Float.MAX_VALUE;
                 attacker.heal(Float.MAX_VALUE);
+                if(attacker instanceof ServerPlayer player){
+                    CameraShakeManager.sendCameraShake(player, 5f, 3f, 5f, 20);
+                }
                 hasDiscoveredSecretAbility = true;
             }
             DamageSource bleeding = target.damageSources().source(ModDamageTypes.BLEEDING, attacker);
@@ -192,11 +192,6 @@ public class BloodPiercerItem extends Item {
     }
 
     @Override
-    public InteractionResult use(Level level, Player player, InteractionHand hand) {
-        return InteractionResult.FAIL;
-    }
-
-    @Override
     public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> tooltip, TooltipFlag tooltipFlag) {
         tooltip.accept(Component.literal("§6Ability: Heart Strikethrough§r §e§lHIT§r"));
         tooltip.accept(Component.literal("§750% of this weapon's base damage is dealt to the target as armor-piercing damage.§r"));
@@ -238,13 +233,11 @@ public class BloodPiercerItem extends Item {
         if (entity.getName().getString().toLowerCase().contains("hazel")) {
             user.heal(Float.MAX_VALUE);
             entity.hurt(bleeding, Float.MAX_VALUE);
-            currentAbilityCooldown = abilityCooldown;
         } else if (user.getHealth() / user.getMaxHealth() <= 0.2) {
             float playerHealth = roundTwoDigits(user.getHealth());
             float targetHealth = roundTwoDigits(entity.getHealth());
             entity.hurt(bleeding, Float.MAX_VALUE);
             user.hurt(bleeding, Float.MAX_VALUE);
-            currentAbilityCooldown = abilityCooldown;
         } else if (user.getHealth() / user.getMaxHealth() <= 0.5) {
             float damageMultiplier = 2f;
             float currentHealth = entity.getHealth();
@@ -259,7 +252,6 @@ public class BloodPiercerItem extends Item {
             } else {
                 entity.hurt(bleeding, Float.MAX_VALUE);
             }
-            currentAbilityCooldown = abilityCooldown;
         } else {
             float damageMultiplier = 1.75f;
             float currentHealth = entity.getHealth();
@@ -275,7 +267,6 @@ public class BloodPiercerItem extends Item {
             } else if (entity.isAlive()) {
                 entity.hurt(bleeding, Float.MAX_VALUE);
             }
-            currentAbilityCooldown = abilityCooldown;
         }
     }
 }

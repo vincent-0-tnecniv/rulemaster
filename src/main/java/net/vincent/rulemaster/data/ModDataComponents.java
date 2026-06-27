@@ -2,7 +2,6 @@ package net.vincent.rulemaster.data;
 
 import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -23,7 +22,6 @@ public class ModDataComponents {
     public static final DataComponentType<Boolean> LOW =
             register("low_health", builder -> builder.persistent(Codec.BOOL)
                     .networkSynchronized(BOOLEAN_STREAM_CODEC).cacheEncoding());
-
 
     private static <T>DataComponentType<T> register(String name, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
         return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, Identifier.fromNamespaceAndPath(RuleMaster.MOD_ID, name),

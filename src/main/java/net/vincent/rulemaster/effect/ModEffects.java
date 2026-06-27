@@ -39,6 +39,8 @@ public class ModEffects {
                             Identifier.fromNamespaceAndPath(RuleMaster.MOD_ID, "stun"), -10.0f,
                             AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
+    public static final Holder<MobEffect> DASH = registerMobEffect("dash", new DashEffect(MobEffectCategory.BENEFICIAL, 0x000000));
+
 
     private static Holder<MobEffect> registerMobEffect(String name, MobEffect effect) {
         return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT,

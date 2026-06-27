@@ -5,6 +5,5 @@ import net.vincent.rulemaster.tag.ModTags;
 
 public class ModToolMaterials {
     public static final ToolMaterial BLOOD_CRYSTAL = new ToolMaterial(ModTags.Blocks.INCORRECT_FOR_BLOOD_CRYSTAL_TOOL,
-            1200, 5f, 10f, 20, ModTags.Items.BLOOD_CRYSTAL_REPAIRABLE);
-
+            1000, 5f, 10f, 20, ModTags.Items.BLOOD_CRYSTAL_REPAIRABLE);
 }
