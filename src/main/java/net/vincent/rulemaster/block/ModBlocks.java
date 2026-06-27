@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.vincent.rulemaster.RuleMaster;
+import net.vincent.rulemaster.util.BlockPropertiesHelper;
 
 import java.util.function.Function;
 
@@ -19,7 +20,7 @@ public class ModBlocks {
     public static final Block BLOOD_CRYSTAL_BLOCK = registerBlock("blood_crystal_block", properties ->
             new Block(properties.strength(4.0F).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
     public static final Block FLESH_BLOCK = registerBlock("flesh_block", properties ->
-            new FleshBlock(properties.strength(-1.0F, 3600000.0F).noLootTable().isValidSpawn(Blocks::never).sound(SoundType.SLIME_BLOCK)));
+            new FleshBlock(BlockPropertiesHelper.copy(properties, Blocks.BEDROCK).noLootTable().sound(SoundType.SLIME_BLOCK)));
     // no copy using code allowed - have to do the actual copy yourself
 
     private static Block registerBlockWithoutBlockItem(String name, Function<BlockBehaviour.Properties, Block> function) {
