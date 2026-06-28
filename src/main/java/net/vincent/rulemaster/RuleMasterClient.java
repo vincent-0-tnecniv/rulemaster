@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.minecraft.resources.Identifier;
 import net.vincent.rulemaster.client.CameraShakeManager;
 import net.vincent.rulemaster.client.CameraShakePayload;
+import net.vincent.rulemaster.entity.client.ModEntityModelRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,5 +41,6 @@ public class RuleMasterClient implements ClientModInitializer {
 		});
 
 		LOGGER.info("Client Initialized!");
+		ModEntityModelRenderer.registerEntityModel();
 	}
 }

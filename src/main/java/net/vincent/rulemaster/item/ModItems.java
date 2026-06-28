@@ -10,6 +10,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.vincent.rulemaster.RuleMaster;
 import net.vincent.rulemaster.item.custom.BloodPiercerItem;
+import net.vincent.rulemaster.item.custom.CannonItem;
 import net.vincent.rulemaster.item.custom.DashItem;
 
 import java.util.function.Function;
@@ -23,7 +24,10 @@ public class ModItems {
     public static final Item BLOOD_CRYSTAL_STAFF = registerItem("blood_crystal_staff", Item::new
     );
 
-    public static final Item DASHER = registerItem("dasher", DashItem::new);
+    public static final Item BLOOD_CRYSTAL_SWORD = registerItem("blood_crystal_sword", properties ->
+            new DashItem(properties.sword(ModToolMaterials.BLOOD_CRYSTAL, 0, 0)));
+
+    public static final Item THUNDER_CANNON = registerItem("thunder_cannon", CannonItem::new);
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function) {
         return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(RuleMaster.MOD_ID, name),

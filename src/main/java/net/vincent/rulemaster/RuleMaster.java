@@ -7,9 +7,12 @@ import net.vincent.rulemaster.block.ModBlocks;
 import net.vincent.rulemaster.client.CameraShakePayload;
 import net.vincent.rulemaster.data.ModDataComponents;
 import net.vincent.rulemaster.effect.ModEffects;
+import net.vincent.rulemaster.entity.ModEntities;
 import net.vincent.rulemaster.item.ModCreativeModeTabs;
 import net.vincent.rulemaster.item.ModItems;
 import net.vincent.rulemaster.loot.ModLootTableModifiers;
+import net.vincent.rulemaster.world.structure.pieces.ModStructurePieces;
+import net.vincent.rulemaster.world.structure.pieces.ModStructureTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,5 +33,8 @@ public class RuleMaster implements ModInitializer {
 		ModEffects.registerEffects();
 		ModDataComponents.registerDataComponents();
 		ModLootTableModifiers.registerLootTableModifyEvents();
+		ModEntities.registerModEntities();
+		ModStructurePieces.register();
+		ModStructureTypes.register();
 	}
 }

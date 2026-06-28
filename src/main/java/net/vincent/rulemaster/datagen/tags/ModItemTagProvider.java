@@ -1,4 +1,4 @@
-package net.vincent.rulemaster.datagen;
+package net.vincent.rulemaster.datagen.tags;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
@@ -7,9 +7,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.vincent.rulemaster.block.ModBlocks;
 import net.vincent.rulemaster.item.ModItems;
 import net.vincent.rulemaster.tag.ModTags;
 

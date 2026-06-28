@@ -135,7 +135,19 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.itemModelOutput.accept(ModItems.BLOOD_PIERCER,
                 new ClientItem(healthMatchingPiercerModel, new ClientItem.Properties(false, false, 1f)).model());
 
+        ItemModel.Unbaked unbakedCannon = ItemModelUtils.plainModel(itemModelGenerators.createFlatItemModel(ModItems.THUNDER_CANNON, ModelTemplates.FLAT_HANDHELD_ITEM));
+        ItemModel.Unbaked unbakedChargedCannon = ItemModelUtils.plainModel(itemModelGenerators.createFlatItemModel(ModItems.THUNDER_CANNON, "_charged", ModelTemplates.FLAT_HANDHELD_ITEM));
+
+        ItemModel.Unbaked chargeMatchingCannonModel = new ConditionalItemModel.Unbaked(Optional.empty(),
+                new HasComponent(ModDataComponents.CHARGED, false),
+                unbakedChargedCannon, unbakedCannon);
+
+        itemModelGenerators.itemModelOutput.accept(ModItems.THUNDER_CANNON,
+                new ClientItem(chargeMatchingCannonModel, new ClientItem.Properties(false, false, 1f)).model());
+
         itemModelGenerators.generateFlatItem(ModItems.BLOOD_CRYSTAL, ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.BLOOD_CRYSTAL_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);
+
         itemModelGenerators.declareCustomModelItem(ModItems.BLOOD_CRYSTAL_STAFF);
 //        itemModelGenerators.generateFlatItem(ModItems.RAW_BISMUTH, ModelTemplates.FLAT_ITEM);
 //        // itemModelGenerators.generateFlatItem(ModItems.CHISEL, ModelTemplates.FLAT_ITEM);

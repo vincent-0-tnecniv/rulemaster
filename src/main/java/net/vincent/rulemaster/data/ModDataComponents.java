@@ -15,6 +15,10 @@ public class ModDataComponents {
     public static final StreamCodec<ByteBuf, Boolean> BOOLEAN_STREAM_CODEC =
             StreamCodec.of(ByteBuf::writeBoolean, ByteBuf::readBoolean);
 
+    public static final DataComponentType<Boolean> CHARGED =
+            register("charged", booleanBuilder -> booleanBuilder.persistent(Codec.BOOL)
+                    .networkSynchronized(BOOLEAN_STREAM_CODEC).cacheEncoding());
+
     public static final DataComponentType<Boolean> HALF =
             register("half_health", builder -> builder.persistent(Codec.BOOL)
                     .networkSynchronized(BOOLEAN_STREAM_CODEC).cacheEncoding());

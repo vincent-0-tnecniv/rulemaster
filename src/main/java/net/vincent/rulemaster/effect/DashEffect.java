@@ -1,19 +1,20 @@
 package net.vincent.rulemaster.effect;
 
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.vincent.rulemaster.datagen.damage.ModDamageTypes;
 
 import java.util.List;
 
 public class DashEffect extends MobEffect {
-
-    public static final int expirableTick = 5;
 
     protected DashEffect(MobEffectCategory category, int color) {
         super(category, color);
@@ -33,6 +34,10 @@ public class DashEffect extends MobEffect {
             return false;
         }
         livingEntity.fallDistance = 0;
+        MobEffectInstance effect = livingEntity.getEffect(ModEffects.DASH);
+        if(effect != null && effect.endsWithin(10) && livingEntity instanceof Player player) {
+            player.playSound(SoundEvents.GENERIC_EXPLODE.value(), 1.0f, 1.0f);
+        }
         return true;
     }
 
@@ -40,7 +45,4 @@ public class DashEffect extends MobEffect {
     public boolean shouldApplyEffectTickThisTick(int tickCount, int amplification) {
         return true;
     }
-
-    // this is a test comment that should only exist in master.
-    // right now, this comment is in Local folder.
 }

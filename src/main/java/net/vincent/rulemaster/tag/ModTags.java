@@ -7,6 +7,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.trading.VillagerTrade;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.vincent.rulemaster.RuleMaster;
@@ -55,6 +56,14 @@ public class ModTags {
 
         private static TagKey<VillagerTrade> createTag(String name) {
             return TagKey.create(Registries.VILLAGER_TRADE, Identifier.fromNamespaceAndPath(RuleMaster.MOD_ID, name));
+        }
+    }
+
+    public static class Biomes {
+        public static final TagKey<Biome> HAS_CRADLE_OF_LIFE = createTag("has_cradle_of_life");
+
+        private static TagKey<Biome> createTag(String name) {
+            return TagKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(RuleMaster.MOD_ID, name));
         }
     }
 

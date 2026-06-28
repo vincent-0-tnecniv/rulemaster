@@ -1,4 +1,4 @@
-package net.vincent.rulemaster.datagen;
+package net.vincent.rulemaster.datagen.loot;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
@@ -14,7 +14,6 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.vincent.rulemaster.block.ModBlocks;
-import net.vincent.rulemaster.item.ModItems;
 
 import java.util.concurrent.CompletableFuture;
 

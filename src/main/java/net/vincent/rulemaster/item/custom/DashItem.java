@@ -1,5 +1,6 @@
 package net.vincent.rulemaster.item.custom;
 
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -34,6 +35,7 @@ public class DashItem extends Item {
                 Mth.lerp(.75f, player.getDeltaMovement().y, vector.y),
                 Mth.lerp(.75f, player.getDeltaMovement().z, vector.z)
         ));
+        player.playSound(SoundEvents.ZOMBIE_BREAK_WOODEN_DOOR, 1.0f, 1.0f);
         player.addEffect(new MobEffectInstance(ModEffects.DASH, 50, 0,  false, false));
         player.invulnerableTime = 20;
         player.getCooldowns().addCooldown(itemStack, 100);

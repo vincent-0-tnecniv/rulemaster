@@ -7,6 +7,9 @@ import net.minecraft.core.registries.Registries;
 import net.vincent.rulemaster.datagen.*;
 import net.vincent.rulemaster.datagen.damage.ModDamageTypes;
 import net.vincent.rulemaster.datagen.enchantment.ModEnchantments;
+import net.vincent.rulemaster.datagen.loot.ModBlockLootTableProvider;
+import net.vincent.rulemaster.datagen.loot.ModEntityLootTableProvider;
+import net.vincent.rulemaster.datagen.tags.*;
 import net.vincent.rulemaster.datagen.villager.ModPOITags;
 import net.vincent.rulemaster.datagen.villager.ModTradeSets;
 import net.vincent.rulemaster.datagen.villager.ModVillagerTradeTags;
@@ -27,6 +30,8 @@ public class RuleMasterDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModEntityTypeTagProvider::new);
 //		pack.addProvider(ModEquipmentAssetProvider::new);
 		pack.addProvider(ModSoundsProvider::new);
+		pack.addProvider(ModStructureRegistryProvider::new);
+		pack.addProvider(ModBiomeTagProvider::new);
 
 		pack.addProvider(ModRegistryDataProvider::new);
 		pack.addProvider(ModVillagerTradeTags::new);

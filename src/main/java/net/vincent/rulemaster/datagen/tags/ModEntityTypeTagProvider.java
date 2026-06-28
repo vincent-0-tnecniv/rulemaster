@@ -1,4 +1,4 @@
-package net.vincent.rulemaster.datagen;
+package net.vincent.rulemaster.datagen.tags;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
