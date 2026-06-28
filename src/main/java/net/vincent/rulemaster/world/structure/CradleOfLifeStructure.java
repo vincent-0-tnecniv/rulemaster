@@ -2,6 +2,7 @@ package net.vincent.rulemaster.world.structure;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -23,6 +24,14 @@ public class CradleOfLifeStructure extends Structure {
     protected Optional<GenerationStub> findGenerationPoint(GenerationContext context) {
         // Get the chunk position
         BlockPos chunkPos = context.chunkPos().getWorldPosition();
+
+        long seed = chunkPos.getX() * 341873128712L + chunkPos.getZ() * 132897987541L;
+        RandomSource structureRandom = RandomSource.create(seed);
+
+        // Only spawn in ~1% of valid chunks
+        if (structureRandom.nextInt(100) != 0) {
+            return Optional.empty();
+        }
 
         // Get the height at the center of the chunk (x+8, z+8)
         int height = context.chunkGenerator().getBaseHeight(
