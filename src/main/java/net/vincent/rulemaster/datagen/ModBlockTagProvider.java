@@ -3,7 +3,12 @@ package net.vincent.rulemaster.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.references.BlockIds;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.vincent.rulemaster.block.ModBlocks;
 
 import java.util.concurrent.CompletableFuture;
@@ -15,8 +20,12 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.BLOOD_CRYSTAL_BLOCK);
+
+        var blockLookup = registries.lookupOrThrow(Registries.BLOCK);
+
+        registerTag(blockLookup, BlockTags.MINEABLE_WITH_PICKAXE,
+                ModBlocks.BLOOD_CRYSTAL_BLOCK);
+
 //                .add(ModBlocks.RAW_BISMUTH_BLOCK)
 //                .add(ModBlocks.BISMUTH_ORE)
 //                .add(ModBlocks.BISMUTH_DEEPSLATE_ORE)
@@ -34,8 +43,8 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 //        valueLookupBuilder(BlockTags.NEEDS_IRON_TOOL)
 //                .add(ModBlocks.BISMUTH_DEEPSLATE_ORE);
 
-        valueLookupBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(ModBlocks.BLOOD_CRYSTAL_BLOCK);
+        registerTag(blockLookup, BlockTags.NEEDS_DIAMOND_TOOL,
+                ModBlocks.BLOOD_CRYSTAL_BLOCK);
 
 //        valueLookupBuilder(BlockTags.STAIRS)
 //                .add(ModBlocks.BISMUTH_STAIRS);
@@ -96,5 +105,17 @@ public class ModBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 //                .add(ModBlocks.STRIPPED_BLOODWOOD_LOG)
 //                .add(ModBlocks.STRIPPED_BLOODWOOD_WOOD);
 
+    }
+
+    public void registerTag(HolderLookup.RegistryLookup<Block> blockLookup, TagKey<Block> tag, Block... blocks) {
+        for (Block iteratedBlock : blocks) {
+            tag(tag).add(blockLookup.getOrThrow(iteratedBlock.builtInRegistryHolder().key()).key());
+        }
+    }
+
+    public void deregisterTag(HolderLookup.RegistryLookup<Block> blockLookup, TagKey<Block> tag, Block... blocks) {
+        for (Block iteratedBlock : blocks) {
+            tag(tag).remove(blockLookup.getOrThrow(iteratedBlock.builtInRegistryHolder().key()).key());
+        }
     }
 }

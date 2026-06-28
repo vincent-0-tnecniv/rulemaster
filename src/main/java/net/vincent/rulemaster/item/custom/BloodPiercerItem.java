@@ -20,6 +20,7 @@ import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
 import net.vincent.rulemaster.client.CameraShakeManager;
 import net.vincent.rulemaster.data.ModDataComponents;
 import net.vincent.rulemaster.datagen.damage.ModDamageTypes;
@@ -113,12 +114,8 @@ public class BloodPiercerItem extends Item {
     }
 
     @Override
-    public @NonNull InteractionResult useOn(UseOnContext context) {
-        Player player = context.getPlayer();
-        if (player != null && player.hasEffect(ModEffects.STUN)) {
-            return InteractionResult.FAIL;
-        }
-        return super.useOn(context);
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+        return InteractionResult.FAIL;
     }
 
     @Override

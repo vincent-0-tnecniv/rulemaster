@@ -3,8 +3,12 @@ package net.vincent.rulemaster.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.vincent.rulemaster.block.ModBlocks;
 import net.vincent.rulemaster.item.ModItems;
 import net.vincent.rulemaster.tag.ModTags;
@@ -18,21 +22,26 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
+
+        var itemLookup = registries.lookupOrThrow(Registries.ITEM);
+
 //        valueLookupBuilder(ModTags.Items.TRANSFORMABLE_ITEMS)
 //                .add(ModItems.BISMUTH)
 //                .add(Items.IRON_INGOT)
 //                .add(Items.COAL)
 //                .add(ModItems.CAULIFLOWER);
 //
-        valueLookupBuilder(ModTags.Items.BLOOD_CRYSTAL_REPAIRABLE)
-                .add(ModItems.BLOOD_CRYSTAL);
+        registerTag(itemLookup, ModTags.Items.BLOOD_CRYSTAL_REPAIRABLE,
+                ModItems.BLOOD_CRYSTAL);
 //
 //        valueLookupBuilder(ItemTags.SWORDS).add(ModItems.BISMUTH_SWORD);
 //        valueLookupBuilder(ItemTags.PICKAXES).add(ModItems.BISMUTH_PICKAXE).add(ModItems.BISMUTH_PAXEL).add(ModItems.BISMUTH_HAMMER);
 //        valueLookupBuilder(ItemTags.SHOVELS).add(ModItems.BISMUTH_SHOVEL).add(ModItems.BISMUTH_PAXEL);
 //        valueLookupBuilder(ItemTags.AXES).add(ModItems.BISMUTH_AXE).add(ModItems.BISMUTH_PAXEL);
 //        valueLookupBuilder(ItemTags.HOES).add(ModItems.BISMUTH_HOE);
-        valueLookupBuilder(ItemTags.SPEARS).add(ModItems.BLOOD_PIERCER);
+
+        registerTag(itemLookup, ItemTags.SPEARS,
+                ModItems.BLOOD_PIERCER);
 //
 //        valueLookupBuilder(ItemTags.HEAD_ARMOR)
 //                .add(ModItems.BISMUTH_HELMET);
@@ -66,5 +75,17 @@ public class ModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 //                .add(ModBlocks.BLOODWOOD_WOOD.asItem())
 //                .add(ModBlocks.STRIPPED_BLOODWOOD_LOG.asItem())
 //                .add(ModBlocks.STRIPPED_BLOODWOOD_WOOD.asItem());
+    }
+
+    public void registerTag(HolderLookup.RegistryLookup<Item> blockLookup, TagKey<Item> tag, Item... items) {
+        for (Item iteratedItem : items) {
+            tag(tag).add(blockLookup.getOrThrow(iteratedItem.builtInRegistryHolder().key()).key());
+        }
+    }
+
+    public void deregisterTag(HolderLookup.RegistryLookup<Item> blockLookup, TagKey<Item> tag, Item... items) {
+        for (Item iteratedItem : items) {
+            tag(tag).remove(blockLookup.getOrThrow(iteratedItem.builtInRegistryHolder().key()).key());
+        }
     }
 }

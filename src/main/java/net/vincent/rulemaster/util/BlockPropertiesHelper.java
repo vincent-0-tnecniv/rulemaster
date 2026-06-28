@@ -15,7 +15,7 @@ public class BlockPropertiesHelper {
         PropertiesAccessor accessor = (PropertiesAccessor) source;
         PropertiesAccessor copyAccessor = (PropertiesAccessor) properties;
 
-        // Copy using public setters and accessor getters
+        // Copy using setters and accessor getters
         properties.strength(accessor.getDestroyTime(), accessor.getExplosionResistance()); // V // V
         properties.sound(accessor.getSoundType()); // V
         properties.mapColor(accessor.getMapColor()); // V
@@ -37,7 +37,7 @@ public class BlockPropertiesHelper {
         String descriptionId = accessor.getDescriptionId().get(blockKey);
         properties.overrideDescription(descriptionId); // X
 
-        // Boolean properties with public setters
+        // Boolean properties with setters
 
         if(accessor.getIsLiquid()){
             properties.liquid(); // V
@@ -78,7 +78,7 @@ public class BlockPropertiesHelper {
             //  vanilla method case 0
             properties.offsetType(BlockBehaviour.OffsetType.NONE);
         } else {
-            // trickier - even XYZ can have y =0
+            // trickier - even XYZ can have y = 0
             // following does a 10-block distance test - should not vary
             BlockBehaviour.OffsetFunction offsetFunction = accessor.getOffsetFunction();
             BlockPos pos1 = new BlockPos(0, 0, 0);
@@ -97,10 +97,6 @@ public class BlockPropertiesHelper {
                 properties.offsetType(BlockBehaviour.OffsetType.NONE);
             }
         }
-
-        // Note: Some properties like isValidSpawn, isRedstoneConductor, etc.
-        // need to be set using their respective public setters if available.
-
         return properties;
     }
 }
